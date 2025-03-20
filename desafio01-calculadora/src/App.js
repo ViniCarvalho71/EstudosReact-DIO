@@ -39,7 +39,27 @@ const App = () => {
       setCurrentNumber(String(sub))
     }
 }
+  const handleMulti = () => {
+    if(firstNumber == 0){
+      setFirstNumber(String(currentNumber))
+      setCurrentNumber('0') 
+      setOperation("*")
+    } else {
+      const sub = Number(firstNumber) * Number(currentNumber)
+      setCurrentNumber(String(sub))
+    }
+  }
 
+  const handleDiv = () => {
+    if(firstNumber == 0){
+      setFirstNumber(String(currentNumber))
+      setCurrentNumber('0') 
+      setOperation("/")
+    } else {
+      const sub = Number(firstNumber) / Number(currentNumber)
+      setCurrentNumber(String(sub))
+    }
+  }
   const handleEquals = () => {
     if(!firstNumber == 0 && operation != '' && currentNumber != 0){
       switch(operation){
@@ -48,6 +68,12 @@ const App = () => {
           break;
         case '-':
           handleSub();
+          break;
+        case '*':
+          handleMulti();
+          break;
+        case '/':
+          handleDiv();
           break;
           default:
           break;
@@ -60,8 +86,8 @@ const App = () => {
       <Content>
         <Input value={currentNumber}/>
         <Row>
-          <Button label="x" onClick={() => handleAddNumber('x')}/>
-          <Button label="/" onClick={() => handleAddNumber('/')}/>
+          <Button label="x" onClick={handleMulti}/>
+          <Button label="/" onClick={handleDiv}/>
           <Button label="C" onClick={() => handleOnClear()}/>
           <Button label="X" onClick={() => handleAddNumber('X')}/>
         </Row>
