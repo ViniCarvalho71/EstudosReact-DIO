@@ -12,7 +12,7 @@ module.exports = {
             },
             {
                 test:/\.html$/,
-                use: [{loader: "babel-loader"}]
+                use: ["html-loader"]
             },
             {
                 test:/\.css$/,
@@ -27,7 +27,7 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx"]
     },
-    plugin: [
+    plugins: [
         new HtmlWebPackPlugin({
             template: './public/index.html'
         })
